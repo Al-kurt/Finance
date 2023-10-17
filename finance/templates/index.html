@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>TOTAL</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in portfolio if row["total_shares"] != 0 %}
+        <tr>
+            <td>{{ row["symbol"].upper() }}</td>
+            <td>{{ row["symbol"].upper() }}</td>
+            <td>{{ row["total_shares"] }}</td>
+            <td>{{ row["price"] }}</td>
+            <td>{{ row["TOTAL"] }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><b>Cash</b></td>
+            <td>{{ user[0]["cash"] }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><b>TOTAL</b></td>
+            <td>{{ user[0]["TOTAL"] }}</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}
